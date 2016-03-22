@@ -21,36 +21,52 @@ public class Calculadora {
         Menu();
     }
 
-    public static int Numero() {
-        int a = 0, b = 0;
-        System.out.println("Ingrese primer numero");
-        Leer(a);
-        System.out.println("Ingrese segundo numero");
-        Leer(b);
-        return a;
-    }
-
     public static void Menu() {
-        int dato = 0;
-        int suma;
-        Scanner leer = new Scanner(System.in);
-        do {
-            System.out.println("Seleccione operacion: ");
+        int a, b;
+        int op = 0;
+        do{
             System.out.println("1.Suma");
             System.out.println("2.Resta");
             System.out.println("3.Multiplicacion");
-            System.out.println("4.Divicion");
+            System.out.println("4.Division");
             System.out.println("5.Salir");
-            dato = leer.nextInt();
-            if (dato==1){
-                System.out.println("" + Suma(a,b));
+            System.out.println("-------------------");
+            op = Leer();
+            switch (op) {
+                case 1: {
+                    System.out.println("Opcion suma: ");
+                    a = numero();
+                    b = numero();
+                    System.out.println("La suma es: " + Suma(a, b));
+                }
+                break;
+                case 2: {
+                    System.out.println("Opcion resta: ");
+                    a = numero();
+                    b = numero();
+                    System.out.println("La resta es: " + Resta(a, b));
+                }
+                break;
+                case 3: {
+                    System.out.println("Opcion multiplicacion: ");
+                    a = numero();
+                    b = numero();
+                    System.out.println("La multiplicacion es: " + Multiplicacion(a, b));
+                }
+                break;
+                case 4: {
+                    System.out.println("Opcion divicion: ");
+                    a = numero();
+                    b = numero();
+                    System.out.println("La divicion es: " + Divicion(a, b));
+                }
+                break;
+                case 5: {
+                    System.out.println("Adios ");
+                }break;
             }
-        } while (dato != 5);
-    }
-
-    public static void Leer(int a) {
-        Scanner leer = new Scanner(System.in);
-    }
+        }while(op!=5);    
+   }
 
     public static int Suma(int a, int b) {
         int suma;
@@ -64,7 +80,7 @@ public class Calculadora {
         return resta;
     }
 
-    public static int Multi(int a, int b) {
+    public static int Multiplicacion(int a, int b) {
         int multiplicacion;
         multiplicacion = a * b;
         return multiplicacion;
@@ -72,7 +88,21 @@ public class Calculadora {
 
     public static float Divicion(int a, int b) {
         float divicion;
-        divicion = (float) (a / b);
+        divicion = (float) a / b;
         return divicion;
+    }
+
+    public static int Leer() {
+        int dato;
+        Scanner leer = new Scanner(System.in);
+        dato = leer.nextInt();
+        return dato;
+    }
+
+    public static int numero() {
+        int n = 0;
+        System.out.println("Ingrese numero");
+        n = Leer();
+        return n;
     }
 }
