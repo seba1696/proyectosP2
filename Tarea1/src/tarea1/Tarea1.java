@@ -89,7 +89,7 @@ public class Tarea1 {
         int i, a, j;
         System.out.println("Ingrese numero maximo.");
         a = numero();
-        System.out.println();
+        System.out.println("Numeros primos anteriores al maximo: ");
         for (i = 2; i < (a + 1); i++) {
             for (j = 2; i > j && i % j != 0; j++);
             if (j == i) {
@@ -111,11 +111,12 @@ public class Tarea1 {
         System.out.println("Ingrese dimension del arreglo.");
         a = numero();
         int arreglo[] = new int[a];
+        System.out.println("------------------------------------------");
+        System.out.println("Arreglo generado: ");
         for (i = 0; i < a; i++) {
             arreglo[i] = azar.nextInt(150);
             System.out.print(arreglo[i] + " - ");
         }
-        System.out.println();
         pos = 0;
         mayor = arreglo[0];
         for (j = 0; j < a; j++) {
