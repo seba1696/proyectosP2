@@ -42,11 +42,12 @@ public class Tarea1 {
                 }
                 break;
                 case 3: {
-
+                    Opcion3();
                 }
                 break;
                 case 4: {
                     System.out.println("Adios.");
+                    System.out.println("------------------------------------------"); 
                 }
                 break;
             }
@@ -68,6 +69,7 @@ public class Tarea1 {
     }
 
     public static void Opcion1() {
+        System.out.println("------------------------------------------");
         int a, b;
         System.out.println("Ingrese primer numero.");
         a = numero();
@@ -83,23 +85,47 @@ public class Tarea1 {
     }
 
     public static void Opcion2() {
-        Scanner leer = new Scanner(System.in);
+        System.out.println("------------------------------------------");
         int i, a, j;
         System.out.println("Ingrese numero maximo.");
-        a = leer.nextInt();
+        a = numero();
         System.out.println();
         for (i = 2; i < (a + 1); i++) {
-            for (j = 2; j < i && i % j != 0; j++);
+            for (j = 2; i > j && i % j != 0; j++);
             if (j == i) {
                 if (i != 2) {
                     System.out.print(" , ");
                 }
                 System.out.print(i);
-                j--;
+                j++;
             }
         }
         System.out.println("");
         System.out.println("------------------------------------------");
     }
 
+    public static void Opcion3() {
+        System.out.println("------------------------------------------");
+        int i, a, j, mayor, pos;
+        Random azar = new Random();
+        System.out.println("Ingrese dimension del arreglo.");
+        a = numero();
+        int arreglo[] = new int[a];
+        for (i = 0; i < a; i++) {
+            arreglo[i] = azar.nextInt(150);
+            System.out.print(arreglo[i] + " - ");
+        }
+        System.out.println();
+        pos = 0;
+        mayor = arreglo[0];
+        for (j = 0; j < a; j++) {
+            if (mayor < arreglo[j]) {
+                mayor = arreglo[j];
+                pos = j + 1;
+            }
+        }
+        System.out.println();
+        System.out.println("Posicion del numero mayor: " + pos);
+        System.out.println("------------------------------------------");
+    }
 }
