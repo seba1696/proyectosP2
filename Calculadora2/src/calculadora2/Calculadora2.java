@@ -80,12 +80,20 @@ public class Calculadora2 {
                     System.out.println("La potencia es : " + Potencia(a,b));
                 }
                 break;
-                case 7: {
-                    System.out.println("Adios ");
+               case 7: {
+                    System.out.println("Opcion potencia 2: ");
+                    System.out.println("Ingrese numero a elevar: ");
+                    a = numero();
+                    System.out.println("Elevado a: ");
+                    b = numero();
+                    System.out.println("La potencia es : " + Potencia2(a, b));
                 }
                 break;
+                case 8: {
+                    System.out.println("Adios ");
+                }
             }
-        } while (op != 7);
+        } while (op != 8);
     }
 
     public static int Suma(int a, int b) {
@@ -120,6 +128,24 @@ public class Calculadora2 {
     public static double Potencia (int a , int b){
         double potencia;
         potencia = pow(a,b);
+        return potencia;
+    }
+    public static double Potencia2(int a, int b) {
+        double potencia = 1;
+        int x;
+        x = 0;
+        if (b > 0) {
+            do {
+                potencia = potencia * (a);
+                x++;
+            } while (x != b);
+        } else {
+            do {
+                potencia = potencia * (a);
+                x--;
+            } while (x != b);
+            potencia = (1 / potencia);
+        }
         return potencia;
     }
 
