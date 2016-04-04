@@ -47,7 +47,7 @@ public class Tarea1 {
                 break;
                 case 4: {
                     System.out.println("Adios.");
-                    System.out.println("------------------------------------------"); 
+                    System.out.println("------------------------------------------");
                 }
                 break;
             }
@@ -106,7 +106,7 @@ public class Tarea1 {
 
     public static void Opcion3() {
         System.out.println("------------------------------------------");
-        int i, a, j, mayor, pos;
+        int i, a, j, mayor, pos, lugar, z = 0, cont = 0;
         Random azar = new Random();
         System.out.println("Ingrese dimension del arreglo.");
         a = numero();
@@ -114,7 +114,7 @@ public class Tarea1 {
         System.out.println("------------------------------------------");
         System.out.println("Arreglo generado: ");
         for (i = 0; i < a; i++) {
-            arreglo[i] = azar.nextInt(150);
+            arreglo[i] = azar.nextInt(5);
             System.out.print(arreglo[i] + " - ");
         }
         pos = 0;
@@ -123,9 +123,11 @@ public class Tarea1 {
             if (mayor < arreglo[j]) {
                 mayor = arreglo[j];
                 pos = j + 1;
+                System.out.println();
             }
         }
         System.out.println();
+        System.out.println("Numero mayor generado: " + mayor);
         System.out.println("Posicion del numero mayor: " + pos);
         System.out.println("------------------------------------------");
     }
