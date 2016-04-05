@@ -1,0 +1,95 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gestionhotelera;
+
+import java.util.*;
+
+/**
+ *
+ * @author lab
+ */
+public class GestionHotelera {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Menu();
+    }
+
+    public static void Menu() {
+        int op;
+        do {
+            System.out.println("--------------------------");
+            System.out.println("'Bienvenido'.");
+            System.out.println("1.Estado de habitacion.");
+            System.out.println("2.Estado del hotel.");
+            System.out.println("3.Reservas.");
+            System.out.println("4.Boleta.");
+            System.out.println("5.Reiniciar hotel.");
+            System.out.println("--------------------------");
+            op = leerOP();
+            switch (op) {
+                case 1: {
+                    Habitaciones();
+                }
+                break;
+                case 2: {
+                }
+                break;
+                case 3: {
+                }
+                break;
+                case 4: {
+                }
+                break;
+                case 5: {
+                }
+                break;
+            }
+            if (op < 1 || op > 5) {
+                System.out.println("Error!!-Ingrese opcion valida.");
+            }
+        } while (op < 1 || op > 5);
+    }
+
+    public static int leerOP() {
+        int n;
+        Scanner leer = new Scanner(System.in);
+        n = leer.nextInt();
+        return n;
+    }
+
+    public static String[][] Habitaciones() {
+        String habitaciones[][] = new String[10][2];
+        int i, j, s, cont;
+        cont = 0;
+        for (i = 0; i < 4; i++) {
+            habitaciones[i][0] = "Matrimonial";
+        }
+        for (i = 4; i < 7; i++) {
+            habitaciones[i][0] = "Doble";
+        }
+        for (i = 7; i < 10; i++) {
+            habitaciones[i][0] = "Simple";
+        }
+        for (i = 0; i < 10; i++) {
+            for (j = 0; j < 2; j++) {
+                habitaciones[i][1] = "Disponible";
+            }
+        }
+        System.out.print("Estado de habitacion numero: ");
+        do {
+            s = leerOP();
+            for (j = 0; j < 2; j++) {
+                System.out.println(" /" + habitaciones[s][j] + "/");
+                cont++;
+            }
+            System.out.println("-----------------------------------");
+        } while (cont == 0);
+        return habitaciones;
+    }
+}
