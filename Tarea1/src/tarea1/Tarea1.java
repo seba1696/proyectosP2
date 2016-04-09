@@ -126,7 +126,7 @@ public class Tarea1 {
         System.out.println("------------------------------------------");
         System.out.println("Arreglo generado: ");
         for (i = 0; i < a; i++) {
-            arreglo[i] = azar.nextInt(5);
+            arreglo[i] = azar.nextInt(150);
             System.out.print(arreglo[i] + " - ");
         }
         pos = 0;
