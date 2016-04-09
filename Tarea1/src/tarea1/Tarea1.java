@@ -6,6 +6,7 @@
 package tarea1;
 
 import java.util.*;
+import java.io.*;
 
 /**
  *
@@ -56,9 +57,20 @@ public class Tarea1 {
     }
 
     public static int Leer() {
-        int op;
-        Scanner leer = new Scanner(System.in);
-        op = leer.nextInt();
+        int op = 0;
+        boolean valor;
+        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
+        do {
+            try {
+                op = Integer.parseInt(leer.readLine());
+                valor = true;
+
+            } catch (Exception e) {
+                System.out.println("Ingrese solo numeros.");
+                System.out.println("------------------------------------------");
+                valor = false;
+            }
+        } while (valor == false);
         return op;
     }
 
