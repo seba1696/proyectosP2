@@ -5,7 +5,6 @@
  */
 package tarea1;
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -53,23 +52,13 @@ public class Tarea1 {
                 break;
             }
         } while (op != 4);
+
     }
 
     public static int Leer() {
-        int op = 0;
-        boolean valor;
-        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
-        do {
-            try {
-                op = Integer.parseInt(leer.readLine());
-
-                valor = true;
-            } catch (Exception e) {
-                System.out.println("Ingrese un valor numerico.");
-                System.out.println("------------------------------------------");
-                valor = false;
-            }
-        } while (valor == false);
+        int op;
+        Scanner leer = new Scanner(System.in);
+        op = leer.nextInt();
         return op;
     }
 
@@ -82,9 +71,9 @@ public class Tarea1 {
     public static void Opcion1() {
         System.out.println("------------------------------------------");
         int a, b;
-        System.out.print("Ingrese primer numero.");
+        System.out.println("Ingrese primer numero.");
         a = numero();
-        System.out.print("Ingrese segundo numero.");
+        System.out.println("Ingrese segundo numero.");
         b = numero();
         if (a % b == 0) {
             System.out.println("El primer numero es multiplo del segundo.");
@@ -125,7 +114,7 @@ public class Tarea1 {
         System.out.println("------------------------------------------");
         System.out.println("Arreglo generado: ");
         for (i = 0; i < a; i++) {
-            arreglo[i] = azar.nextInt(150);
+            arreglo[i] = azar.nextInt(5);
             System.out.print(arreglo[i] + " - ");
         }
         pos = 0;
