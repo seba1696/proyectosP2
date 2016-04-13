@@ -19,10 +19,11 @@ public class Tarea2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Menu();
+        String[][] Final = new String[10][3];
+        Menu(Final);
     }
 
-    public static void Menu() {
+    public static void Menu(String[][] Final) {
         int op;
         do {
             System.out.println("--------------------------");
@@ -34,22 +35,22 @@ public class Tarea2 {
             System.out.println("5.Salir");
             System.out.println("--------------------------");
             op = leerOP();
+            Hotel(Final);
             switch (op) {
                 case 1: {
-                    Hotel();
-                    Estado(Hotel());
-
+                    Estado(Final);
                 }
                 break;
                 case 2: {
-                    Op(Hotel());
+                    Op(Final);
                 }
                 break;
                 case 3: {
+                    Boleta(Final);
                 }
                 break;
                 case 4: {
-                    reset(Super(), Hotel());
+                    reset(superUsuario(), Final);
                 }
                 break;
                 case 5: {
@@ -98,28 +99,27 @@ public class Tarea2 {
         return x;
     }
 
-    public static String[][] Hotel() {
-        String h[][] = new String[10][3];
+    public static String[][] Hotel(String[][] Final) {
         int i, j;
         for (i = 0; i < 4; i++) {
-            h[i][0] = "Matrimonial";
+            Final[i][0] = "Matrimonial";
         }
         for (i = 4; i < 7; i++) {
-            h[i][0] = "Doble";
+            Final[i][0] = "Doble";
         }
         for (i = 7; i < 10; i++) {
-            h[i][0] = "Simple";
+            Final[i][0] = "Simple";
         }
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 3; j++) {
-                h[i][1] = "Disponible";
-                h[i][2] = "cuenta: ";
+                Final[i][1] = "Disponible";
+                Final[i][2] = "cuenta: ";
             }
         }
-        return h;
+        return Final;
     }
 
-    public static void Estado(String[][] h) {
+    public static void Estado(String[][] Final) {
         int i, j, s, x = 0, y = 0;
         do {
             System.out.print("Estado de habitacion numero: ");
@@ -127,21 +127,22 @@ public class Tarea2 {
             if (s > 0 && s < 11) {
 
                 for (j = 0; j < 2; j++) {
-                    System.out.println(" /" + h[s - 1][j] + "/");
+                    System.out.println(" /" + Final[s - 1][j] + "/");
                 }
                 System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                 y = leerOP();
+                System.out.println("--------------------------");
 
             } else {
                 System.out.println("La habitacion seleccionada no existe.");
                 System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                 y = leerOP();
+                System.out.println("--------------------------");
             }
         } while (y != 0);
     }
 
-    public static String[][] Op(String[][] h) {
-        String[][] h2 = new String[10][3];
+    public static String[][] Op(String[][] Final) {
         int i, j, a;
         System.out.println("Operacion a realizar : ");
         System.out.println("1.Marcar habitacion como reservada.");
@@ -149,28 +150,29 @@ public class Tarea2 {
         System.out.println("3.Marcar habitacion como disponible.");
         a = leerOP();
         if (a == 1) {
-            Op1(Hotel());
+            Op1(Final);
         } else {
             if (a == 2) {
-                Op2(Hotel());
+                Op2(Final);
             } else {
                 if (a == 3) {
-                    Op3(Hotel());
+                    Op3(Final);
                 } else {
                     System.out.println("La operacion seleccionada no existe.");
+                    System.out.println("---------------------------------------");
                 }
             }
         }
-        return h2;
+        return Final;
     }
 
-    public static String Op1(String[][] habitaciones) {
+    public static String Op1(String[][] Final) {
         String Op1 = null;
         int s, x = 0, y = 0, i, j;
         int cuenta = 0, cont = 0;
         Op1 = String.valueOf(cuenta);
         Op1 = Integer.toString(cuenta);
-        do { 
+        do {
             System.out.print("Reservar habitacion numero: ");
             s = leerOP();
             if (s > 0 && s < 11) {
@@ -178,21 +180,31 @@ public class Tarea2 {
                     x = 1;
                     System.out.println("Cantidad de noches: ");
                     cuenta = leerOP();
-                    habitaciones[s - 1][1] = "Reservada";
-                    habitaciones[s - 1][2] = "cuenta: " + cuenta * 60000;
-                    System.out.println("Total: " + cuenta * 60000);
+                    if (Final[s - 1][1] == "Reservada") {
+                        System.out.println("Habitacion ya reservada.");
+                    } else {
+                        Final[s - 1][1] = "Reservada";
+                        Final[s - 1][2] = "cuenta: " + cuenta * 60000;
+                        System.out.println("Total: " + cuenta * 60000);
+                    }
                     System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                     y = leerOP();
+                    System.out.println("----------------------------------");
                 } else {
                     if (s >= 5 && s < 8) {
                         x = 1;
                         System.out.println("Cantidad de noches: ");
                         cuenta = leerOP();
-                        habitaciones[s - 1][1] = "Reservada";
-                        habitaciones[s - 1][2] = "cuenta: " + cuenta * 50000;
-                        System.out.println("Total: " + cuenta * 50000);
+                        if (Final[s - 1][1] == "Reservada") {
+                            System.out.println("Habitacion ya reservada.");
+                        } else {
+                            Final[s - 1][1] = "Reservada";
+                            Final[s - 1][2] = "cuenta: " + cuenta * 50000;
+                            System.out.println("Total: " + cuenta * 50000);
+                        }
                         System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                         y = leerOP();
+                        System.out.println("----------------------------------");
                     }
                 }
             } else {
@@ -200,59 +212,77 @@ public class Tarea2 {
                     x = 1;
                     System.out.println("Cantidad de noches: ");
                     cuenta = leerOP();
-                    habitaciones[s - 1][1] = "Reservada";
-                    habitaciones[s - 1][2] = "cuenta: " + cuenta * 40000;
-                    System.out.println("Total: " + cuenta * 40000);
+                    if (Final[s - 1][1] == "Reservada") {
+                        System.out.println("Habitacion ya reservada.");
+                    } else {
+                        Final[s - 1][1] = "Reservada";
+                        Final[s - 1][2] = "cuenta: " + cuenta * 40000;
+                        System.out.println("Total: " + cuenta * 40000);
+                    }
                     System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                     y = leerOP();
+                    System.out.println("----------------------------------");
                 } else {
                     System.out.println("La habitacion seleccionada no existe.");
                     x = 0;
+                    System.out.println("----------------------------------");
                 }
             }
         } while (y != 0);
         return Op1;
     }
 
-    public static String Op2(String[][] habitaciones) {
+    public static String Op2(String[][] Final) {
         String Op2 = null;
         int s, x = 0, y = 0, i, j;
-        System.out.print("Ocupar habitacion numero: ");
-        s = leerOP();
         do {
+            System.out.print("Ocupar habitacion numero: ");
+            s = leerOP();
             if (s > 0 && s < 11) {
                 x = 1;
-                habitaciones[s - 1][1] = "Ocupada";
+                if (Final[s - 1][1] == "Ocupada") {
+                    System.out.println("Habitacion ya ocupada.");
+                } else {
+                    Final[s - 1][1] = "Ocupada";
+                }
                 System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                 y = leerOP();
+                System.out.println("----------------------------------");
             } else {
                 System.out.println("La habitacion seleccionada no existe.");
                 x = 0;
+                System.out.println("----------------------------------");
             }
         } while (y != 0);
         return Op2;
     }
 
-    public static String Op3(String[][] habitaciones) {
+    public static String Op3(String[][] Final) {
         String Op3 = null;
         int s, x = 0, y = 0, i, j;
-        System.out.print("Dejar libre habitacion numero: ");
-        s = leerOP();
         do {
+            System.out.print("Dejar libre habitacion numero: ");
+            s = leerOP();
             if (s > 0 && s < 11) {
                 x = 1;
-                habitaciones[s - 1][1] = "Disponible";
+                if (Final[s - 1][1] == "Disponible") {
+                    System.out.println("Habitacion ya disponible.");
+                } else {
+                    Final[s - 1][1] = "Disponible";
+                }
                 System.out.println("¿Desea ver otra habitacion? S(1)/N(0)");
                 y = leerOP();
+                System.out.println("----------------------------------");
             } else {
                 System.out.println("La habitacion seleccionada no existe.");
                 x = 0;
+                System.out.println("----------------------------------");
             }
         } while (y != 0);
         return Op3;
     }
 
-    public static boolean Super() {
+    public static boolean superUsuario() {
         boolean R = false;
         System.out.print("Ingrese contraseña: ");
         String x = leer();
@@ -262,24 +292,25 @@ public class Tarea2 {
         return R;
     }
 
-    public static String[][] reset(boolean R, String[][] h) {
+    public static String[][] reset(boolean R, String[][] Final) {
         int j, i;
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 3; j++) {
-                h[i][1] = "Disponible";
+                Final[i][1] = "Disponible";
             }
         }
         for (i = 0; i < 10; i++) {
             for (j = 0; j < 3; j++) {
-                System.out.println(h[i][j]);
+                System.out.println(Final[i][j]);
             }
         }
         System.out.println("Todo disponible.");
+        System.out.println("----------------------------------");
 
-        return h;
+        return Final;
     }
 
-    public static void Ac(String[][] h2) {
+    public static void Boleta(String[][] Final) {
         String[][] e = new String[10][3];
         int i, j;
         for (i = 0; i < 10; i++) {
