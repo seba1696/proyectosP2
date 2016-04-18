@@ -18,12 +18,12 @@ public class Cambiobinario {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int numero;
         System.out.println("Ingrese numero decimal: ");
-        System.out.println(validarNumero(leerNumero()));
-        calcularBinario8(leerNumero());
-        if (validarNumero(leerNumero())==true){
-            calcularBinario8(leerNumero());
-            imrprimirResultado(int num,int a);
+        numero = leerNumero();
+        System.out.println(validarNumero(numero));
+        if (validarNumero(numero)==true){
+            calcularBinario8(numero);
         }else{
             System.out.println("Error!!");
         }
@@ -38,7 +38,7 @@ public class Cambiobinario {
 
     public static boolean validarNumero(int num) {
         boolean r;
-        if (num <= 255 || num >= 0) {
+        if (num < 256 || num > -1) {
             r = true;
             System.out.println("");
         } else {
@@ -70,10 +70,12 @@ public class Cambiobinario {
             a[7 - x] = aux;
             x++;
         }
+        imprimirResultado( num,a );
         return a;
     }
     public static void imprimirResultado(int num, int [] a){
         System.out.println("Numero decimal ingresado: " + num);
+        System.out.println("");
         int x;
         for (x = 0; x < 8; x++) {
             System.out.print("[" + a[x] + "]");
