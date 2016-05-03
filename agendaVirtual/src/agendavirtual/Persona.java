@@ -32,6 +32,7 @@ public class Persona {
         this.fecha = fecha;
         this.telefono = telefono;
     }
+
     public void mostrarPersona() {
         String msj = "";
         msj = "\t" + this.nombre;
@@ -43,64 +44,51 @@ public class Persona {
         System.out.println(msj);
     }
 
-    public String getNombre() throws IOException {
-        System.out.println("Ingrese nombre: ");
-        return nombre = leer();
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre(String nombre) throws IOException {
-        this.nombre = leer();
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTelefono() throws IOException {
-        System.out.println("Ingrese numero de telefono: ");
-        return telefono= leer();
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTelefono(String telefono) throws IOException {
-        this.telefono = leer();
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getCorreo() throws IOException {
-        System.out.println("Ingrese correo electronico: ");
-        return correo= leer();
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreo(String correo) throws IOException {
-        this.correo = leer();
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getDireccion() throws IOException {
-        System.out.println("Ingrese Direccion: ");
-        return direccion = leer();
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDireccion(String direccion) throws IOException {
-        this.direccion = leer();
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getCiudad() throws IOException {
-        System.out.println("Ingrese ciudad de nacimiento: ");
-        return ciudad = leer();
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setCiudad(String ciudad) throws IOException {
-        this.ciudad = leer();
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public String getFecha() throws IOException {
-        System.out.println("Ingrese fecha de nacimiento: ");
-        return fecha = leer();
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFecha(String fecha) throws IOException {
-        this.fecha = leer();
-    }
-
-    String leer() throws IOException {
-        String a;
-        Scanner leer = new Scanner(System.in);
-        a = leer.nextLine();
-        return a;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

@@ -23,7 +23,7 @@ public class Agenda {
         return agenda;
     }
 
-    public void setcolecVinilos(ArrayList<Persona> agenda) {
+    public void setAgenda(ArrayList<Persona> agenda) {
         this.agenda = agenda;
     }
 
@@ -67,7 +67,7 @@ public class Agenda {
         for (int i = 0; i < per.size(); i++) {
             if (per.get(i).getNombre().equals(nombre)) {
                 System.out.println("Datos del contacto: ");
-                System.out.println("\tNombre contacto" + "\tNumero de telefono" + "\tCorreo" + "\tDireccion electronico" + "\tCiudad de nacimiento" + "\tFecha de nacimiento \n");
+                System.out.println("Nom  " + "   Num tel   " + "   Correo   " + "   Direc elec   " + "    Ciudad    " + "   Fecha \n");
                 System.out.println("=================================================================");
                 System.out.println(i + 1);
                 per.get(i).mostrarPersona();
@@ -87,7 +87,7 @@ public class Agenda {
         for (int i = 0; i < per.size(); i++) {
             if (per.get(i) == null) {
                 System.out.println("La agenda esta vacia.");
-            }else{
+            } else {
                 System.out.println("La agenda contiene contactos.");
             }
         }
