@@ -44,7 +44,7 @@ public class Menu {
                     valor = true;
                 } catch (Exception e) {
                     System.out.println("Ingrese solo numeros.");
-                    System.out.println("------------------------------------------");
+                    System.out.println("=============================================");
                     valor = false;
                 }
             } while (valor == false);
