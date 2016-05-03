@@ -29,7 +29,6 @@ public class Menu {
         Scanner leer = new Scanner(System.in);
         int n;
         do {
-
             System.out.println("1.Agregar contacto.");
             System.out.println("2.Eliminar contacto.");
             System.out.println("3.Cantidad de contactos.");
@@ -39,73 +38,77 @@ public class Menu {
             System.out.println("7.Existe contacto.");
             System.out.println("8.Salir.");
             n = leer.nextInt();
-            switch (n) {
-                case 1: {
-                    System.out.println("============================================");
-                    System.out.println("Ingrese Nombre del contacto: ");
-                    String nombre = leerString();
-                    System.out.println("Ingrese numero de telefono: ");
-                    String telefono = leerString();
-                    System.out.println("Ingrese correo electronico: ");
-                    String correo = leerString();
-                    System.out.println("Ingrese Direccion: ");
-                    String direccion = leerString();
-                    System.out.println("Ingrese ciudad de nacimiento: ");
-                    String ciudad = leerString();
-                    System.out.println("Ingrese fecha de nacimiento: ");
-                    String fecha = leerString();
-                    a.agregarContacto(a.getAgenda(), nombre, telefono, correo, direccion, ciudad, fecha);
-                    System.out.println("============================================");
+            if (n<1 || n>8){
+                System.out.println("Opcion no valida");
+            }else{
+                switch (n) {
+                    case 1: {
+                        System.out.println("============================================");
+                        System.out.println("Ingrese Nombre del contacto: ");
+                        String nombre = leerString();
+                        System.out.println("Ingrese numero de telefono: ");
+                        String telefono = leerString();
+                        System.out.println("Ingrese correo electronico: ");
+                        String correo = leerString();
+                        System.out.println("Ingrese Direccion: ");
+                        String direccion = leerString();
+                        System.out.println("Ingrese ciudad de nacimiento: ");
+                        String ciudad = leerString();
+                        System.out.println("Ingrese fecha de nacimiento: ");
+                        String fecha = leerString();
+                        a.agregarContacto(a.getAgenda(), nombre, telefono, correo, direccion, ciudad, fecha);
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 2: {
+                        System.out.println("============================================");
+                        System.out.println("Ingrese nombre del contacto: ");
+                        String nombre = leerString();
+                        a.eliminarContacto(a.getAgenda(), nombre);
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 3: {
+                        System.out.println("============================================");
+                        a.tamañoAgenda(a.getAgenda());
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 4: {
+                        System.out.println("============================================");
+                        a.eliminarAgenda(a.getAgenda());
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 5: {
+                        System.out.println("============================================");
+                        a.vaciaAgenda(a.getAgenda());
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 6: {
+                        System.out.println("============================================");
+                        System.out.println("Ingrese nombre del contacto: ");
+                        String nombre = leerString();
+                        a.mostrarContacto(a.getAgenda(), nombre);
+                        System.out.println("========================================================");
+                    }
+                    break;
+                    case 7: {
+                        System.out.println("============================================");
+                        System.out.println("Ingrese nombre del contacto: ");
+                        String nombre = leerString();
+                        a.mostrarBusquedaContacto(a.getAgenda(), nombre);
+                        System.out.println("============================================");
+                    }
+                    break;
+                    case 8: {
+                        System.out.println("============================================");
+                        System.out.println("Adios.");
+                        System.out.println("============================================");
+                    }
+                    break;
                 }
-                break;
-                case 2: {
-                    System.out.println("============================================");
-                    System.out.println("Ingrese nombre del contacto: ");
-                    String nombre = leerString();
-                    a.eliminarContacto(a.getAgenda(), nombre);
-                    System.out.println("============================================");
-                }
-                break;
-                case 3: {
-                    System.out.println("============================================");
-                    a.tamañoAgenda(a.getAgenda());
-                    System.out.println("============================================");
-                }
-                break;
-                case 4: {
-                    System.out.println("============================================");
-                    a.eliminarAgenda(a.getAgenda());
-                    System.out.println("============================================");
-                }
-                break;
-                case 5: {
-                    System.out.println("============================================");
-                    a.vaciaAgenda(a.getAgenda());
-                    System.out.println("============================================");
-                }
-                break;
-                case 6: {
-                    System.out.println("============================================");
-                    System.out.println("Ingrese nombre del contacto: ");
-                    String nombre = leerString();
-                    a.mostrarContacto(a.getAgenda(), nombre);
-                    System.out.println("========================================================");
-                }
-                break;
-                case 7: {
-                    System.out.println("============================================");
-                    System.out.println("Ingrese nombre del contacto: ");
-                    String nombre = leerString();
-                    a.mostrarBusquedaContacto(a.getAgenda(), nombre);
-                    System.out.println("============================================");
-                }
-                break;
-                case 8: {
-                    System.out.println("============================================");
-                    System.out.println("Adios.");
-                    System.out.println("============================================");
-                }
-                break;
             }
         } while (n != 8);
     }
