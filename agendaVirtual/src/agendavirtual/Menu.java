@@ -26,8 +26,9 @@ public class Menu {
 
     public void setMenu() throws IOException {
         System.out.println("!Bienvenido!");
-        Scanner leer = new Scanner(System.in);
+        BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
         int n;
+        boolean valor;
         do {
             System.out.println("1.Agregar contacto.");
             System.out.println("2.Eliminar contacto.");
@@ -37,7 +38,16 @@ public class Menu {
             System.out.println("6.Informacion contacto.");
             System.out.println("7.Existe contacto.");
             System.out.println("8.Salir.");
-            n = leer.nextInt();
+            do {
+                try {
+                    n = Integer.parseInt(leer.readLine());
+                    valor = true;
+                } catch (Exception e) {
+                    System.out.println("Ingrese solo numeros.");
+                    System.out.println("------------------------------------------");
+                    valor = false;
+                }
+            } while (valor == false);
             if (n<1 || n>8){
                 System.out.println("Opcion no valida");
             }else{
